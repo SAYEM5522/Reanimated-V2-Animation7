@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withDecay, withSpring } from 'react-native-reanimated';
+import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withDecay, withSpring, withTiming } from 'react-native-reanimated';
 
 const ProductDetails = () => {
   const Y = useSharedValue(0);
@@ -80,12 +80,22 @@ const ProductDetails = () => {
         translateY:withSpring(interpolate(Y.value,[0,60],[0,150],Extrapolate.CLAMP),config)
       }],
       height:withSpring(interpolate(Y.value,[0,60],[130,110],Extrapolate.CLAMP),config),
-      width:interpolate(Y.value,[0,60],[360,410],Extrapolate.CLAMP)
+      width:interpolate(Y.value,[0,60],[360,410],Extrapolate.CLAMP),
+      top:interpolate(Y.value,[0,60],[-70,-120],Extrapolate.CLAMP),
+    }
+  })
+  const BottomListTransForm=useAnimatedStyle(()=>{
+    return{
+      transform:[{
+        translateY:interpolate(Y.value,[0,60],[0,110],Extrapolate.CLAMP),
+      }],
+      backgroundColor:interpolateColor(Y.value,[0,70],["rgb(211,211,211)","(0°,0%,100%)"])
     }
   })
   return (
     <>
     <PanGestureHandler onGestureEvent={gestureHandler}>
+    
     <Animated.View style={[styles.container,animatedStyle]}>
       <Animated.View style={[styles.ImageContainer,ImageAnimation]}>
       <Animated.Image
@@ -93,9 +103,13 @@ const ProductDetails = () => {
       style={[styles.Image,ImageTransForm]}
       />
        </Animated.View>
-      <StatusBar/>
+       <StatusBar/>
     </Animated.View>
     </PanGestureHandler>
+    <Animated.View style={[styles.BottomList,BottomListTransForm]}>
+      <Text style={styles.BottomListText1}>Last One</Text>
+      <Text style={styles.BottomListText2}>CJ6314-146</Text>
+    </Animated.View>
     <Animated.View style={[styles.BottomContainer,BottomContainerAnimation]}>
       <Text style={styles.BottomContainerText1}>210</Text>
       <Text style={styles.BottomContainerText2}>U160</Text>
@@ -116,7 +130,7 @@ const styles = StyleSheet.create({
     width:170,
     borderRadius:15,
     backgroundColor:"#8cdbca",
-    zIndex:1,
+    zIndex:100,
     position:'relative',
     left:50,
     top:50
@@ -137,7 +151,8 @@ const styles = StyleSheet.create({
     height:130,
     backgroundColor:'black',
     borderRadius:36,
-    marginBottom:50
+    marginBottom:-55,
+   
   },
   BottomContainerText1:{
     color:'white',
@@ -151,5 +166,30 @@ const styles = StyleSheet.create({
     fontWeight:'900',
     top:20,
     left:20
+  },
+  BottomList:{
+    height:110,
+    width:'84%',
+    backgroundColor:'lightgray',
+    alignSelf:'center',
+    top:-40,
+    borderTopLeftRadius:36,
+    borderTopRightRadius:36,
+   
+    
+  },
+  BottomListText1:{
+    color:'gray',
+    fontSize:16,
+    fontWeight:'bold',
+    left:20,
+    top:20,
+  
+  },
+  BottomListText2:{
+    left:200,
+    color:'gray',
+    fontSize:15,
+    fontWeight:'bold'
   }
 })
