@@ -74,6 +74,15 @@ const ProductDetails = () => {
       }]
     }
   })
+  const BottomContainerAnimation=useAnimatedStyle(()=>{
+    return{
+      transform:[{
+        translateY:withSpring(interpolate(Y.value,[0,60],[0,150],Extrapolate.CLAMP),config)
+      }],
+      height:withSpring(interpolate(Y.value,[0,60],[130,110],Extrapolate.CLAMP),config),
+      width:interpolate(Y.value,[0,60],[360,410],Extrapolate.CLAMP)
+    }
+  })
   return (
     <>
     <PanGestureHandler onGestureEvent={gestureHandler}>
@@ -87,10 +96,10 @@ const ProductDetails = () => {
       <StatusBar/>
     </Animated.View>
     </PanGestureHandler>
-    <View style={styles.BottomContainer}>
+    <Animated.View style={[styles.BottomContainer,BottomContainerAnimation]}>
       <Text style={styles.BottomContainerText1}>210</Text>
       <Text style={styles.BottomContainerText2}>U160</Text>
-    </View>
+    </Animated.View>
     </>
   )
 }
