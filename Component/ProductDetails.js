@@ -75,6 +75,7 @@ const ProductDetails = () => {
     }
   })
   return (
+    <>
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.container,animatedStyle]}>
       <Animated.View style={[styles.ImageContainer,ImageAnimation]}>
@@ -86,6 +87,11 @@ const ProductDetails = () => {
       <StatusBar/>
     </Animated.View>
     </PanGestureHandler>
+    <View style={styles.BottomContainer}>
+      <Text style={styles.BottomContainerText1}>210</Text>
+      <Text style={styles.BottomContainerText2}>U160</Text>
+    </View>
+    </>
   )
 }
 
@@ -116,4 +122,24 @@ const styles = StyleSheet.create({
     position:'absolute',
     resizeMode:'contain'
   },
+  BottomContainer:{
+    width:"84%",
+    alignSelf:'center',
+    height:130,
+    backgroundColor:'black',
+    borderRadius:36
+  },
+  BottomContainerText1:{
+    color:'white',
+    left:25,
+    top:20,
+    
+  },
+  BottomContainerText2:{
+    color:'white',
+    fontSize:28,
+    fontWeight:'900',
+    top:20,
+    left:20
+  }
 })

@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import ProductDetails from './ProductDetails'
 
 const ProductList = () => {
   return (
     <View>
-    <Text>Hello</Text>
+   <ProductDetails/>
     </View>
   )
 }
