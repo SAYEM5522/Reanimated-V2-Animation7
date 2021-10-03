@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withDecay, withSpring } from 'react-native-reanimated';
 
 const ProductDetails = () => {
   const Y = useSharedValue(0);
@@ -31,8 +31,8 @@ const ProductDetails = () => {
       Y.value = ctY.startX + event.translationY;
     
     },
-    onEnd: (_) => {
-      Y.value = withSpring(0);
+    onEnd: (_evt) => {
+      Y.value = withSpring(0,config);
       if(Y.value>20){
         Y.value=90
       }
@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     height:130,
     backgroundColor:'black',
-    borderRadius:36
+    borderRadius:36,
+    marginBottom:50
   },
   BottomContainerText1:{
     color:'white',
