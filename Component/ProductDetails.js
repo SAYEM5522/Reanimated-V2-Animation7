@@ -3,7 +3,7 @@ import { Image, StatusBar, StyleSheet, Text, useWindowDimensions, View } from 'r
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withDecay, withSpring, withTiming } from 'react-native-reanimated';
 
-const ProductDetails = () => {
+const ProductDetails = ({translationY}) => {
   const Y = useSharedValue(0);
   const config={
     mass:0.8,
@@ -84,6 +84,17 @@ const ProductDetails = () => {
       top:interpolate(Y.value,[0,60],[-70,-120],Extrapolate.CLAMP),
     }
   })
+  const ConTainerAnimation=useAnimatedStyle(()=>{
+    return{
+      width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
+      height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
+      left:interpolate(translationY.value,[0,100],[0,100],Extrapolate.CLAMP),
+      transform:[{
+        translateY:interpolate(translationY.value,[0,100],[0,80],Extrapolate.CLAMP),
+      }],
+      zIndex:100
+    }
+  })
   const BottomListTransForm=useAnimatedStyle(()=>{
     return{
       transform:[{
@@ -110,7 +121,7 @@ const ProductDetails = () => {
       <Text style={styles.BottomListText1}>Last One</Text>
       <Text style={styles.BottomListText2}>CJ6314-146</Text>
     </Animated.View>
-    <Animated.View style={[styles.BottomContainer,BottomContainerAnimation]}>
+    <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
       <Text style={styles.BottomContainerText1}>210</Text>
       <Text style={styles.BottomContainerText2}>U160</Text>
     </Animated.View>
@@ -152,6 +163,11 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
     borderRadius:36,
     marginBottom:-55,
+    // position: 'absolute', 
+    // top: 0,
+    // left: 0,
+    // right: 0,
+    // bottom: 0, 
    
   },
   BottomContainerText1:{

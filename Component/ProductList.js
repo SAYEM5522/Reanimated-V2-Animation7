@@ -1,5 +1,6 @@
 import React from 'react'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated'
 import Product from './Product'
 import ProductDetails from './ProductDetails'
 const Item=[{
@@ -30,25 +31,33 @@ const Item=[{
   song:'Billie Eilish',
 
 }]
+
+
+
+const ProductList = () => {
+  const translationY = useSharedValue(0);
+const AnimatedFlatList=Animated.createAnimatedComponent(FlatList);
+const scrollHandler = useAnimatedScrollHandler((event) => {
+  translationY.value = event.contentOffset.y;
+});
 const renderItem=({item,index})=>{
   return(
     <View>
      {
-        (index==0)?<ProductDetails/>:<Product />
+        (index==0)?<ProductDetails translationY={translationY}/>:<Product />
      }
     </View>
   )
 }
-
-const ProductList = () => {
   return (
     <View>
-      <FlatList
+      <AnimatedFlatList
       data={Item}
       keyExtractor={(item)=>item.id}
       showsVerticalScrollIndicator={false}
       renderItem={renderItem}
-     
+      onScroll={scrollHandler}
+      scrollEventThrottle={16}
       />
     </View>
   )
