@@ -86,12 +86,11 @@ const ProductDetails = ({translationY}) => {
   })
   const ConTainerAnimation=useAnimatedStyle(()=>{
     return{
-      width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
-      height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
-      left:interpolate(translationY.value,[0,100],[0,100],Extrapolate.CLAMP),
-      transform:[{
-        translateY:interpolate(translationY.value,[0,100],[0,80],Extrapolate.CLAMP),
-      }],
+      // width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
+      // height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
+      // transform:[{
+      //   translateY:interpolate(translationY.value,[0,100],[0,-680],Extrapolate.CLAMP),
+      // }],
       zIndex:100
     }
   })
@@ -100,7 +99,8 @@ const ProductDetails = ({translationY}) => {
       transform:[{
         translateY:interpolate(Y.value,[0,60],[0,110],Extrapolate.CLAMP),
       }],
-      backgroundColor:interpolateColor(Y.value,[0,70],["rgb(211,211,211)","(0°,0%,100%)"])
+      backgroundColor:interpolateColor(Y.value,[0,70],["rgb(211,211,211)","(0°,0%,100%)"]),
+   
     }
   })
   return (
