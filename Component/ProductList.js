@@ -36,9 +36,11 @@ const Item=[{
 
 const ProductList = () => {
   const translationY = useSharedValue(0);
+ 
 const AnimatedFlatList=Animated.createAnimatedComponent(FlatList);
 const scrollHandler = useAnimatedScrollHandler((event) => {
   translationY.value = event.contentOffset.y;
+  
 });
 const renderItem=({item,index})=>{
   return(
@@ -50,7 +52,7 @@ const renderItem=({item,index})=>{
   )
 }
   return (
-    <View>
+    <View style={styles.Container}>
       <AnimatedFlatList
       data={Item}
       keyExtractor={(item)=>item.id}
@@ -66,5 +68,7 @@ const renderItem=({item,index})=>{
 export default ProductList
 
 const styles = StyleSheet.create({
-
+  Container:{
+    top:-5
+  }
 })

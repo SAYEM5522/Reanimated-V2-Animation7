@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
     backgroundColor:'gray',
     marginTop:50,
     zIndex:-1000
+    
   }
 })

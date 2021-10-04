@@ -113,8 +113,10 @@ const ProductDetails = ({translationY}) => {
       source={{uri:'https://www.pngarts.com/files/2/Shoes-Transparent-Background-PNG.png'}}
       style={[styles.Image,ImageTransForm]}
       />
+   
+      <StatusBar/>
        </Animated.View>
-       <StatusBar/>
+       <Text style={styles.Title}>FREE METCON 3</Text>
     </Animated.View>
     </PanGestureHandler>
     <Animated.View style={[styles.BottomList,BottomListTransForm]}>
@@ -124,6 +126,10 @@ const ProductDetails = ({translationY}) => {
     <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
       <Text style={styles.BottomContainerText1}>210</Text>
       <Text style={styles.BottomContainerText2}>U160</Text>
+      <Image
+      source={{uri:'https://freepngimg.com/thumb/shoes/27428-5-nike-shoes-transparent-background.png'}}
+      style={styles.BottomContainerImage}
+      />
     </Animated.View>
     </>
   )
@@ -135,6 +141,7 @@ const styles = StyleSheet.create({
   container: {
     width:"100%",
     height:450,
+ 
   },
   ImageContainer:{
     height:170,
@@ -207,5 +214,20 @@ const styles = StyleSheet.create({
     color:'gray',
     fontSize:15,
     fontWeight:'bold'
+  },
+  Title:{
+    fontSize:38,
+    fontWeight:'bold',
+    color:'black',
+    width:"65%",
+    left:50,
+    top:80
+  },
+  BottomContainerImage:{
+    width:120,
+    height:70,
+    resizeMode:'contain',
+    left:220,
+    top:-30
   }
 })
