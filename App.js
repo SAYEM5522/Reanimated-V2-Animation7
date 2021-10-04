@@ -8,21 +8,7 @@ import { Item } from "./Component/Data";
 import { PanGestureHandler } from 'react-native-gesture-handler';
 export default function App() {
 
-// const LineAnimation=useAnimatedStyle(()=>{
-//   return{
-//     transform:[
-//       {
-//       rotateZ:-48+"deg"
-//     },
-//     {
-//       translateY:30
-//     },{
-//       translateX:-15
-//     }
-//   ],
-  
-//   }
-// })
+
 const Y = useSharedValue(0);
 const config={
   mass:0.8,
@@ -115,19 +101,19 @@ const BottomContainerAnimation=useAnimatedStyle(()=>{
     }],
     height:withSpring(interpolate(Y.value,[0,60],[130,110],Extrapolate.CLAMP),config),
     width:interpolate(Y.value,[0,60],[360,410],Extrapolate.CLAMP),
-    top:interpolate(Y.value,[0,60],[-70,-120],Extrapolate.CLAMP),
+    top:interpolate(Y.value,[0,60],[-220,-270],Extrapolate.CLAMP),
   }
 })
-const ConTainerAnimation=useAnimatedStyle(()=>{
-  return{
-    // width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
-    // height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
-    // transform:[{
-    //   translateY:interpolate(translationY.value,[0,100],[0,-680],Extrapolate.CLAMP),
-    // }],
-    zIndex:100
-  }
-})
+// const ConTainerAnimation=useAnimatedStyle(()=>{
+//   return{
+//     // width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
+//     // height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
+//     // transform:[{
+//     //   translateY:interpolate(translationY.value,[0,100],[0,-680],Extrapolate.CLAMP),
+//     // }],
+//     zIndex:100
+//   }
+// })
 const BottomListTransForm=useAnimatedStyle(()=>{
   return{
     transform:[{
@@ -144,6 +130,20 @@ const scrollHandler = useAnimatedScrollHandler((event) => {
   translationY.value = event.contentOffset.y;
   
 });
+const ConTainerAnimation=useAnimatedStyle(()=>{
+  return{
+    width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
+    height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
+    transform:[{
+      translateY:interpolate(translationY.value,[0,100],[0,130],Extrapolate.CLAMP),
+    },
+    {
+      translateX:interpolate(translationY.value,[0,100],[0,120],Extrapolate.CLAMP),
+    }
+  ],
+    zIndex:100
+  }
+})
 const renderItem=({item,index})=>{
   return(
     <View>
@@ -169,14 +169,7 @@ const renderItem=({item,index})=>{
           <Text style={styles.BottomListText1}>Last One</Text>
           <Text style={styles.BottomListText2}>CJ6314-146</Text>
         </Animated.View>
-        <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
-          <Text style={styles.BottomContainerText1}>210</Text>
-          <Text style={styles.BottomContainerText2}>U160</Text>
-          <Image
-          source={{uri:'https://freepngimg.com/thumb/shoes/27428-5-nike-shoes-transparent-background.png'}}
-          style={styles.BottomContainerImage}
-          />
-        </Animated.View>
+
         </>
         
         :<Product />
@@ -199,7 +192,16 @@ const renderItem=({item,index})=>{
       scrollEventThrottle={16}
       />
     </View>
- 
+
+
+    <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
+          <Text style={styles.BottomContainerText1}>210</Text>
+          <Text style={styles.BottomContainerText2}>U160</Text>
+          <Image
+          source={{uri:'https://freepngimg.com/thumb/shoes/27428-5-nike-shoes-transparent-background.png'}}
+          style={styles.BottomContainerImage}
+          />
+        </Animated.View>
     </>
   );
 }
@@ -255,6 +257,7 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
     borderRadius:36,
     marginBottom:-55,
+   
  
   },
   BottomContainerText1:{
