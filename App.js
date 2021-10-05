@@ -144,6 +144,11 @@ const ConTainerAnimation=useAnimatedStyle(()=>{
     zIndex:100
   }
 })
+const backgrounAnimation=useAnimatedStyle(()=>{
+  return{
+    backgroundColor:(Y.value>40)&&"rgba(0,0,0,0.96)"
+  }
+})
 const renderItem=({item,index})=>{
   return(
     <View>
@@ -172,7 +177,7 @@ const renderItem=({item,index})=>{
 
         </>
         
-        :<Product />
+        :<Product Y={Y} />
      }
     </View>
   )
@@ -180,9 +185,7 @@ const renderItem=({item,index})=>{
   return (
     <>
     <Animated.View style={[styles.Line,LineAnimation]}/>
-
-
-    <View style={styles.Container2}>
+    <Animated.View style={[styles.Container2,backgrounAnimation]}>
       <AnimatedFlatList
       data={Item}
       keyExtractor={(item)=>item.id}
@@ -191,9 +194,7 @@ const renderItem=({item,index})=>{
       onScroll={scrollHandler}
       scrollEventThrottle={16}
       />
-    </View>
-
-
+    </Animated.View>
     <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
           <Text style={styles.BottomContainerText1}>210</Text>
           <Text style={styles.BottomContainerText2}>U160</Text>

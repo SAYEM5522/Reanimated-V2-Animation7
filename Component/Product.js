@@ -1,11 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated'
 
-const Product = () => {
+const Product = ({Y}) => {
+  const ContainerAnimation=useAnimatedStyle(()=>{
+    return{
+      marginTop:interpolate(Y.value,[0,100],[120,152])
+    }
+  })
   return (
-    <View style={styles.Container}>
+    <Animated.View style={[styles.Container,ContainerAnimation]}>
      
-    </View>
+    </Animated.View>
   )
 }
 
@@ -18,7 +24,7 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     borderRadius:40,
     backgroundColor:'gray',
-    marginTop:50,
+    // marginTop:120,
     zIndex:-1000
     
   }
