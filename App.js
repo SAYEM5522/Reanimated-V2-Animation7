@@ -24,6 +24,13 @@ const config2={
   restDisplacementThreshold:1,
   restSpeedThreshold:0.1
 }
+const config3={
+  mass:0.5,
+  damping:16,
+  overshootClamping:false,
+  restDisplacementThreshold:4,
+  restSpeedThreshold:0.1
+}
 function clamp(value, lowerBound, upperBound) {
   'worklet';
   return Math.max(lowerBound, Math.min(value, upperBound));
@@ -84,7 +91,7 @@ const ImageAnimation =useAnimatedStyle(()=>{
     translateX:interpolate(Y.value,[0,20,40,60],[0,20,30,30],Extrapolate.CLAMP)
   }
 ],
-    height:(Y.value>60)?withSpring(252,config):withSpring(170,config2)
+    height:(Y.value>60)?withSpring(252,config3):withSpring(170,config2)
   }
 })
 const ImageTransForm=useAnimatedStyle(()=>{
@@ -97,10 +104,9 @@ const ImageTransForm=useAnimatedStyle(()=>{
 const BottomContainerAnimation=useAnimatedStyle(()=>{
   return{
     transform:[{
-      translateY:withSpring(interpolate(Y.value,[0,60],[0,150],Extrapolate.CLAMP),config)
+      translateY:withSpring(interpolate(Y.value,[0,90],[0,150],Extrapolate.CLAMP),config)
     }],
     height:withSpring(interpolate(Y.value,[0,60],[130,110],Extrapolate.CLAMP),config),
-    width:interpolate(Y.value,[0,60],[360,410],Extrapolate.CLAMP),
     top:interpolate(Y.value,[0,60],[-220,-270],Extrapolate.CLAMP),
   }
 })
@@ -191,7 +197,7 @@ const renderItem=({item,index})=>{
 
         </>
         
-        :<Product Y={Y} />
+        :<Product Y={Y} color={item.color} />
      }
     </View>
   )
@@ -249,7 +255,7 @@ const styles = StyleSheet.create({
     height:170,
     width:170,
     borderRadius:15,
-    backgroundColor:"#8cdbca",
+    backgroundColor:"#B6E3DB",
     zIndex:100,
     position:'relative',
     left:50,
