@@ -104,16 +104,7 @@ const BottomContainerAnimation=useAnimatedStyle(()=>{
     top:interpolate(Y.value,[0,60],[-220,-270],Extrapolate.CLAMP),
   }
 })
-// const ConTainerAnimation=useAnimatedStyle(()=>{
-//   return{
-//     // width:interpolate(translationY.value,[0,100],[360,120],Extrapolate.CLAMP),
-//     // height:interpolate(translationY.value,[0,100],[130,45],Extrapolate.CLAMP),
-//     // transform:[{
-//     //   translateY:interpolate(translationY.value,[0,100],[0,-680],Extrapolate.CLAMP),
-//     // }],
-//     zIndex:100
-//   }
-// })
+
 const BottomListTransForm=useAnimatedStyle(()=>{
   return{
     transform:[{
@@ -144,9 +135,32 @@ const ConTainerAnimation=useAnimatedStyle(()=>{
     zIndex:100
   }
 })
+   const ConTainerImage=useAnimatedStyle(()=>{
+     return{
+       opacity:interpolate(translationY.value,[0,20],[1,0],Extrapolate.CLAMP)
+     }
+   })
+   const ConTainerTextA=useAnimatedStyle(()=>{
+    return{
+      opacity:interpolate(translationY.value,[0,10],[1,0],Extrapolate.CLAMP)
+    }
+  })
+  const ConTainerTextTransform=useAnimatedStyle(()=>{
+    return{
+      transform:[{
+        translateY:interpolate(translationY.value,[0,100],[20,-20],Extrapolate.CLAMP)
+ 
+      }]
+    }
+  })
 const backgrounAnimation=useAnimatedStyle(()=>{
   return{
-    backgroundColor:(Y.value>40)&&"rgba(0,0,0,0.96)"
+    backgroundColor:(Y.value>70)&&"rgba(0,0,0,0.96)"
+  }
+})
+const TextTransform=useAnimatedStyle(()=>{
+  return{
+   top:interpolate(Y.value,[0,60],[80,135],Extrapolate.CLAMP)
   }
 })
 const renderItem=({item,index})=>{
@@ -167,7 +181,7 @@ const renderItem=({item,index})=>{
        
           <StatusBar/>
            </Animated.View>
-           <Text style={styles.Title}>FREE METCON 3</Text>
+           <Animated.Text style={[styles.Title,TextTransform]}>FREE METCON 3</Animated.Text>
         </Animated.View>
         </PanGestureHandler>
         <Animated.View style={[styles.BottomList,BottomListTransForm]}>
@@ -196,11 +210,11 @@ const renderItem=({item,index})=>{
       />
     </Animated.View>
     <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
-          <Text style={styles.BottomContainerText1}>210</Text>
-          <Text style={styles.BottomContainerText2}>U160</Text>
-          <Image
+          <Animated.Text style={[styles.BottomContainerText1,ConTainerTextA]}>210</Animated.Text>
+          <Animated.Text style={[styles.BottomContainerText2,ConTainerTextTransform]}>U160</Animated.Text>
+          <Animated.Image
           source={{uri:'https://freepngimg.com/thumb/shoes/27428-5-nike-shoes-transparent-background.png'}}
-          style={styles.BottomContainerImage}
+          style={[styles.BottomContainerImage,ConTainerImage]}
           />
         </Animated.View>
     </>
@@ -271,7 +285,7 @@ const styles = StyleSheet.create({
     color:'white',
     fontSize:28,
     fontWeight:'900',
-    top:20,
+    // top:20,
     left:20
   },
   BottomList:{
@@ -305,7 +319,6 @@ const styles = StyleSheet.create({
     color:'black',
     width:"65%",
     left:50,
-    top:80
   },
   BottomContainerImage:{
     width:120,
