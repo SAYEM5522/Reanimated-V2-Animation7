@@ -74,6 +74,7 @@ const animatedStyle = useAnimatedStyle(() => {
         translateY:clamp( Y.value,0,90)
       },
     ],
+    height:interpolate(Y.value,[0,90],[250,450],Extrapolate.CLAMP)
   };
 });
 
@@ -136,6 +137,7 @@ const ConTainerAnimation=useAnimatedStyle(()=>{
 })
 const BottomListTransForm=useAnimatedStyle(()=>{
   return{
+    top:interpolate(Y.value,[0,60],[55,-100],Extrapolate.CLAMP),
     transform:[{
       translateY:interpolate(Y.value,[0,60],[0,110],Extrapolate.CLAMP),
     }],
@@ -168,7 +170,7 @@ const backgrounAnimation=useAnimatedStyle(()=>{
 })
 const TextTransform=useAnimatedStyle(()=>{
   return{
-   top:interpolate(Y.value,[0,60],[0,135],Extrapolate.CLAMP)
+   top:interpolate(Y.value,[0,60],[0,-100],Extrapolate.CLAMP)
   }
 })
 const renderItem=({item,index})=>{
@@ -215,6 +217,7 @@ const renderItem=({item,index})=>{
       renderItem={renderItem}
       onScroll={scrollHandler}
       scrollEventThrottle={16}
+      
       />
     </Animated.View>
     <Animated.View style={[styles.BottomContainer,BottomContainerAnimation,ConTainerAnimation]}>
