@@ -111,20 +111,13 @@ const BottomContainerAnimation=useAnimatedStyle(()=>{
   }
 })
 
-const BottomListTransForm=useAnimatedStyle(()=>{
-  return{
-    transform:[{
-      translateY:interpolate(Y.value,[0,60],[0,110],Extrapolate.CLAMP),
-    }],
-    backgroundColor:interpolateColor(Y.value,[0,70],["rgb(211,211,211)","(0°,0%,100%)"]),
- 
-  }
-})
+
 const translationY = useSharedValue(0);
  
 const AnimatedFlatList=Animated.createAnimatedComponent(FlatList);
 const scrollHandler = useAnimatedScrollHandler((event) => {
   translationY.value = event.contentOffset.y;
+  
   
 });
 const ConTainerAnimation=useAnimatedStyle(()=>{
@@ -139,6 +132,15 @@ const ConTainerAnimation=useAnimatedStyle(()=>{
     }
   ],
     zIndex:100
+  }
+})
+const BottomListTransForm=useAnimatedStyle(()=>{
+  return{
+    transform:[{
+      translateY:interpolate(Y.value,[0,60],[0,110],Extrapolate.CLAMP),
+    }],
+    backgroundColor:interpolateColor(Y.value,[0,70],["rgb(211,211,211)","(0°,0%,100%)"]),
+    opacity:interpolate(translationY.value,[0,100],[1,0],Extrapolate.CLAMP),
   }
 })
    const ConTainerImage=useAnimatedStyle(()=>{
@@ -197,7 +199,7 @@ const renderItem=({item,index})=>{
 
         </>
         
-        :<Product Y={Y} color={item.color} />
+        :<Product Y={Y} color={item.color} translationY={translationY} />
      }
     </View>
   )
