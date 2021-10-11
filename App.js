@@ -168,7 +168,7 @@ const backgrounAnimation=useAnimatedStyle(()=>{
 })
 const TextTransform=useAnimatedStyle(()=>{
   return{
-   top:interpolate(Y.value,[0,60],[80,135],Extrapolate.CLAMP)
+   top:interpolate(Y.value,[0,60],[0,135],Extrapolate.CLAMP)
   }
 })
 const renderItem=({item,index})=>{
@@ -189,9 +189,9 @@ const renderItem=({item,index})=>{
        
           <StatusBar/>
            </Animated.View>
-           <Animated.Text style={[styles.Title,TextTransform]}>FREE METCON 3</Animated.Text>
         </Animated.View>
         </PanGestureHandler>
+        <Animated.Text style={[styles.Title,TextTransform]}>FREE METCON 3</Animated.Text>
         <Animated.View style={[styles.BottomList,BottomListTransForm]}>
           <Text style={styles.BottomListText1}>Last One</Text>
           <Text style={styles.BottomListText2}>CJ6314-146</Text>
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width:"100%",
-    height:450,
+    height:250,
  
   },
   ImageContainer:{
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
     width:'84%',
     backgroundColor:'lightgray',
     alignSelf:'center',
-    top:-40,
+    top:55,
     borderTopLeftRadius:36,
     borderTopRightRadius:36,
    
@@ -327,6 +327,7 @@ const styles = StyleSheet.create({
     color:'black',
     width:"65%",
     left:50,
+    zIndex:-1000
   },
   BottomContainerImage:{
     width:120,

@@ -5,10 +5,10 @@ import Animated, { Extrapolate, interpolate, useAnimatedStyle } from 'react-nati
 const Product = ({Y,color,translationY}) => {
   const ContainerAnimation=useAnimatedStyle(()=>{
     return{
-      marginTop:interpolate(Y.value,[0,100],[120,152],Extrapolate.CLAMP),
+      marginTop:interpolate(Y.value,[0,100],[210,250],Extrapolate.CLAMP),
       backgroundColor:color,
       transform:[{
-        translateY:interpolate(translationY.value,[0,100],[0,-152],Extrapolate.CLAMP)
+        translateY:interpolate(translationY.value,[0,100],[0,-162],Extrapolate.CLAMP)
       }]
     }
   })
