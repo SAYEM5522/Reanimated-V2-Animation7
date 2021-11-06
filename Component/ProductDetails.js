@@ -110,7 +110,7 @@ const ProductDetails = ({translationY}) => {
     <Animated.View style={[styles.container,animatedStyle]}>
       <Animated.View style={[styles.ImageContainer,ImageAnimation]}>
       <Animated.Image
-      source={{uri:'https://www.pngarts.com/files/2/Shoes-Transparent-Background-PNG.png'}}
+      source={{uri:'https://o.remove.bg/downloads/fe67dd2e-47dd-4908-8b6d-541939752329/kyrie-7-big-kids-basketball-shoes-1bNT7m-removebg-preview.png'}}
       style={[styles.Image,ImageTransForm]}
       />
    
@@ -127,7 +127,7 @@ const ProductDetails = ({translationY}) => {
       <Text style={styles.BottomContainerText1}>210</Text>
       <Text style={styles.BottomContainerText2}>U160</Text>
       <Image
-      source={{uri:'https://freepngimg.com/thumb/shoes/27428-5-nike-shoes-transparent-background.png'}}
+      source={{uri:'https://o.remove.bg/downloads/fe67dd2e-47dd-4908-8b6d-541939752329/kyrie-7-big-kids-basketball-shoes-1bNT7m-removebg-preview.png'}}
       style={styles.BottomContainerImage}
       />
     </Animated.View>

@@ -105,7 +105,7 @@ const ImageTransForm=useAnimatedStyle(()=>{
 const BottomContainerAnimation=useAnimatedStyle(()=>{
   return{
     transform:[{
-      translateY:withSpring(interpolate(Y.value,[0,90],[0,150],Extrapolate.CLAMP),config)
+      translateY:withSpring(interpolate(Y.value,[0,90],[0,147],Extrapolate.CLAMP),config)
     }],
     height:withSpring(interpolate(Y.value,[0,60],[130,110],Extrapolate.CLAMP),config),
     top:interpolate(Y.value,[0,60],[-220,-270],Extrapolate.CLAMP),
