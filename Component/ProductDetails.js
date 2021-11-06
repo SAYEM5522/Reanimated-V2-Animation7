@@ -109,6 +109,7 @@ const ProductDetails = ({translationY}) => {
     
     <Animated.View style={[styles.container,animatedStyle]}>
       <Animated.View style={[styles.ImageContainer,ImageAnimation]}>
+        
       <Animated.Image
       source={{uri:'https://o.remove.bg/downloads/fe67dd2e-47dd-4908-8b6d-541939752329/kyrie-7-big-kids-basketball-shoes-1bNT7m-removebg-preview.png'}}
       style={[styles.Image,ImageTransForm]}

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View ,FlatList, StatusBar,Image} from 'react-native';
+import { StyleSheet, Text, View ,FlatList, StatusBar,Image, ScrollView} from 'react-native';
 import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedGestureHandler, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import Product from './Component/Product';
 // import ProductDetails from './Component/ProductDetails';
 import { Item } from "./Component/Data";
 // import ProductList from './Component/ProductList';
 import { PanGestureHandler } from 'react-native-gesture-handler';
+
 export default function App() {
 
 
@@ -180,14 +181,38 @@ const renderItem=({item,index})=>{
         (index==0)?
         
         <>
-        <PanGestureHandler onGestureEvent={gestureHandler}>
+        <PanGestureHandler
+          activeOffsetX={[-50, 40]}
+          activeOffsetY={[-10, 10]}
+        onGestureEvent={gestureHandler}>
         
         <Animated.View style={[styles.container,animatedStyle]}>
           <Animated.View style={[styles.ImageContainer,ImageAnimation]}>
-          <Animated.Image
+        
+        <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={150}
+        decelerationRate={'fast'}
+        >
+          {
+            Item.map((item,index)=>{
+              return(
+                <View key={index}>
+                        <Animated.Image
+                source={{uri:item.img}}
+                style={[styles.Image2]}
+                />
+                </View>
+
+              )
+            })
+          }
+        </ScrollView>
+          {/* <Animated.Image
           source={{uri:'https://www.pngarts.com/files/2/Shoes-Transparent-Background-PNG.png'}}
           style={[styles.Image,ImageTransForm]}
-          />
+          /> */}
        
           <StatusBar/>
            </Animated.View>
@@ -275,6 +300,11 @@ const styles = StyleSheet.create({
     borderRadius:15,
     position:'absolute',
     resizeMode:'contain'
+  },
+  Image2:{
+      height:150,
+      width:150,
+      zIndex:100,
   },
   BottomContainer:{
     width:"84%",

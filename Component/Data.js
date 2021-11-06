@@ -1,6 +1,6 @@
 export const Item=[{
   id:'1',
-  img:"https://www.theindependentbd.com/assets/news_images/hgfxf.jpg",
+  img:"https://o.remove.bg/downloads/b9897de9-9323-4b50-9bd0-7eaf5080e62a/mschf-lil-nas-x-custom-nike-air-max-97-satan-shoes-controversy-removebg-preview.png",
   name:"Dont Smile at Me",
   song:'Billie Eilish',
   color:'#e0cab1'
@@ -8,14 +8,14 @@ export const Item=[{
 },
 {
   id:'2',
-  img:"https://media.istockphoto.com/photos/africanamerican-male-singer-portrait-isolated-on-gradient-studio-in-picture-id1226150009?b=1&k=20&m=1226150009&s=170667a&w=0&h=0pe8s3mEkGlg_5rQmwIxmpSaeyqkz0W0GGJAVaJB_kk=",
+  img:"https://o.remove.bg/downloads/fe67dd2e-47dd-4908-8b6d-541939752329/kyrie-7-big-kids-basketball-shoes-1bNT7m-removebg-preview.png",
   name:"Dont Smile at Me",
   song:'Billie Eilish',
   color:'#B6E3DB'
 },
 {
   id:'3',
-  img:"https://www.theindependentbd.com/assets/news_images/hgfxf.jpg",
+  img:"https://o.remove.bg/downloads/3b47572d-fff7-4ec2-9c10-644a02dda05a/air-zoom-infinity-tour-golf-shoes-wide-Wn1tgQ-removebg-preview.png",
   name:"Dont Smile at Me",
   song:'Billie Eilish',
   color:'#f7e2cb'
